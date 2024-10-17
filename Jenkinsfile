@@ -28,9 +28,10 @@ pipeline {
         stage('Deploy'){
             steps{
                 echo 'Deploy the project'
-                bat 'docker build -t auth-image .'
-                bat 'docker network create -d bridge auth-network'
-                bat 'docker run --network auth-network -p 8090:8090 -d --name auth-container auth-image'
+                bat 'docker rm -f security-container || true'
+                bat 'docker rmi -f security-image || true'
+                bat 'docker build -t security-image .'
+                bat 'docker run --network auth-network -p 8090:8090 -d --name security-container security-image'
             }
         }
     }
