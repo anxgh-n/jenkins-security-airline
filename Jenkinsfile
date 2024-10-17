@@ -29,7 +29,8 @@ pipeline {
             steps{
                 echo 'Deploy the project'
                 bat 'docker build -t auth-image .'
-                bat 'docker run -p 8090:8090 -d --name auth-container auth-image'
+                bat 'docker network create -d bridge auth-network'
+                bat 'docker run --network auth-network -p 8090:8090 -d --name auth-container auth-image'
             }
         }
     }
