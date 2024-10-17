@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "security")
 @AllArgsConstructor
 @NoArgsConstructor
-
+//A new edit-jenkins trial
 public class Security {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
