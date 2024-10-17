@@ -31,7 +31,7 @@ pipeline {
                 bat 'docker rm -f security-container || true'
                 bat 'docker rmi -f security-image || true'
                 bat 'docker build -t security-image .'
-                bat 'docker run --network auth-network -p 8090:8090 -d --name security-container security-image'
+                bat 'docker run --network eureka-network -p 8090:8090 -d --name security-container security-image'
             }
         }
     }
